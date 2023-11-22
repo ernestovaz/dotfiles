@@ -121,7 +121,7 @@ PATH=:$PATH:~/bin
 
 alias vim=nvim
 alias python=python3
-alias py='python -i "$HOME/Documents/code/scripts/math_configuration.py"'
+alias vbox=VBoxManage
 
 bindkey -M menuselect 'h' backward-char
 bindkey -M menuselect 'k' up-line-or-history
