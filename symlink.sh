@@ -1,7 +1,7 @@
 #!/usr/bin/sh 
 
 if [[ "$1" = "-h" || "$1" = "--help" ]]; then
-        echo "Usage: create_symlink.sh [FILE...]"
+        echo "Usage: symlink.sh [FILE...]"
         echo "Creates link for specified dotfile:"
         echo "  - in \$HOME if is file,"
         echo "  - or in \$HOME/.config if is directory."
