@@ -1,4 +1,4 @@
-#!/usr/bin/sh 
+#!/bin/sh 
 
 if [[ "$1" = "-h" || "$1" = "--help" ]]; then
         echo "Usage: symlink.sh [FILE...]"
@@ -25,13 +25,14 @@ create_symlink() {
                 SYMLINK_DIRECTORY+="/${CONFIG_DIRECTORY}"
         fi
 
-        ln -sf ${FILE} ${SYMLINK_DIRECTORY}/${FILENAME}
+        echo "ln -sf ${FILE} ${SYMLINK_DIRECTORY}/${FILENAME}"
 }
 
 ARGUMENTS="$@"
 if test -z "$ARGUMENTS"; then
         SCRIPT_NAME=$(basename "$0")
-        SCRIPT_DIR=$(dirname -- "$0")
-        ARGUMENTS=$(ls -A "$SCRIPT_DIR" -I ".git*" -I "$SCRIPT_NAME")
+	SCRIPT_DIR=$(dirname -- "$0")
+	SCRIPT_PATH=$(realpath -- "$SCRIPT_DIR")
+        ARGUMENTS=$(find "$SCRIPT_PATH" -maxdepth 1 -mindepth 1 ! -name '.git*' ! -name "$SCRIPT_NAME")
 fi
 main "$@"
