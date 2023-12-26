@@ -145,6 +145,5 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-
-artprint -a frog --width 0 --height 0 --style 0 -t "$(fortune -s magic | tr -d '\n' | tr -s ' ' | tr -d '\t')"
-echo '\n'
+#source variables, but outputs no errors if it doesn't exists
+source .envvars 2> /dev/null
