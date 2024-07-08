@@ -78,12 +78,6 @@ require('lazy').setup({
     config = function()
         require("catppuccin").setup({
           transparent_background = true,
-          custom_highlights = function(_)
-              return {
-                LineNrAbove = {fg = U.darken(C.green, 0.4, C.base) },
-                LineNrBelow = {fg = U.darken(C.pink,  0.4, C.base) }
-              }
-            end
         })
         vim.cmd.colorscheme 'catppuccin'
       end,
@@ -108,9 +102,14 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
+    main = 'ibl',
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
+      indent = {
+        char = '┊',
+      },
+      whitespace = {
+        remove_blankline_trail = true,
+      },
     },
   },
 
