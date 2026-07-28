@@ -1,7 +1,6 @@
 zmodload zsh/zprof
 
 # completions
-fpath=("/Users/I587281/.oh-my-zsh/custom/completions" $fpath)
 autoload -Uz compinit
 compinit
 
@@ -11,21 +10,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-# oh-my-zsh
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
-
-plugins=(
-	git
-	zsh-syntax-highlighting
-	zsh-autosuggestions
-	vi-mode
-	kubectl
-	zsh-fzf-history-search
-)
-
-source $ZSH/oh-my-zsh.sh
+# load antidote
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote load "$HOME/.zsh_plugins.txt"
 
 # vi-mode
 VI_MODE_SET_CURSOR=true
@@ -66,7 +53,6 @@ bindkey -s '^o' 'lfcd\n'
 
 # functions
 lfcd () {
-    # `command` is needed in case `lfcd` is aliased to `lf`
     cd "$(command lf -print-last-dir "$@")" || true
 }
 
@@ -166,6 +152,5 @@ rgi() {
   [[ -n "$file" ]] && nvim "+$line" "$file"
 }
 
-# Local overrides (not tracked in dotfiles)
+# Local/corporate overrides (not tracked in dotfiles)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-

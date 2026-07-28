@@ -1,0 +1,20 @@
+# Plugins for antidote
+
+# oh-my-zsh core libs (cherry-picked)
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+ohmyzsh/ohmyzsh path:lib/completion.zsh
+ohmyzsh/ohmyzsh path:lib/git.zsh
+ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+
+# oh-my-zsh plugins (cherry-picked)
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/kubectl
+ohmyzsh/ohmyzsh path:plugins/vi-mode
+
+# community plugins
+zsh-users/zsh-autosuggestions
+joshskidmore/zsh-fzf-history-search
+zsh-users/zsh-syntax-highlighting kind:defer
+
+# prompt
+romkatv/powerlevel10k
