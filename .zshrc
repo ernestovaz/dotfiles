@@ -96,7 +96,7 @@ eval "$(zoxide init zsh)"
 source <(fzf --zsh)
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-. "$HOME/.local/bin/env"
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 
 [ -f "/Users/I587281/.ghcup/env" ] && . "/Users/I587281/.ghcup/env" # ghcup-env
 
