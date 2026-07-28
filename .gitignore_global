@@ -1,0 +1,5 @@
+.worktrees/
+.apophis/
+.zshrc.local
+.config/tmux/plugins/
+.gitconfig.local

@@ -1,0 +1,34 @@
+[core]
+	excludesFile = ~/.gitignore_global
+[delta]
+	navigate = true
+	dark = true
+	side-by-side = true
+[push]
+	autoSetupRemote = true
+	default = current
+[alias]
+	co = checkout
+	sw = switch
+	ci = commit
+	cm = commit -m
+	ca = commit --amend --no-edit
+	st = status
+	cb = checkout -b
+	au = add -u
+	br = branch
+	bd = branch -d
+	lg = log
+	rh = reset --hard
+	fe = fetch
+	ps = push
+	pf = push --force-with-lease
+	pl = pull origin
+	pr = pull --rebase
+	wc = "!f() { git worktree add \"$(git rev-parse --show-toplevel)/.worktrees/${1//\\//-}\" \"$1\"; }; f"
+	wr = "!f() { git worktree remove \"$(git rev-parse --show-toplevel)/.worktrees/${1//\\//-}\"; }; f"
+	wl = worktree list
+
+# Machine-specific config (user, corporate hosts, signing keys)
+[include]
+	path = ~/.gitconfig.local
