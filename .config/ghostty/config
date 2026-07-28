@@ -1,0 +1,37 @@
+# This is the configuration file for Ghostty.
+
+bell-features = no-system,no-audio
+
+keybind = global:cmd+enter=toggle_quick_terminal
+keybind = global:ctrl+enter=toggle_fullscreen
+
+keybind = ctrl+1=text:\x1b1
+keybind = ctrl+2=text:\x1b2
+keybind = ctrl+3=text:\x1b3
+keybind = ctrl+4=text:\x1b4
+keybind = ctrl+5=text:\x1b5
+keybind = ctrl+6=text:\x1b6
+keybind = ctrl+7=text:\x1b7
+keybind = ctrl+8=text:\x1b8
+keybind = ctrl+9=text:\x1b9
+keybind = ctrl+0=text:\x1b0
+
+quick-terminal-position = center
+quick-terminal-autohide = false
+quick-terminal-animation-duration = 0.05
+quick-terminal-size =55%,45%
+quick-terminal-screen = macos-menu-bar
+
+theme = Atom
+window-padding-x = 6
+window-padding-y = 8
+macos-titlebar-style = hidden
+
+font-size = 12
+font-feature = -calt, -liga, -dlig
+adjust-cell-height = -20%
+adjust-cell-width = -10%
+
+shell-integration = zsh
+confirm-close-surface = false
+font-family = Jetbrains Mono
