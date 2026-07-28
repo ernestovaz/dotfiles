@@ -86,7 +86,7 @@ alias scim=sc-im
 alias lg=lazygit
 alias dps='docker ps --format "table {{.ID}}\t{{.Names}}"'
 alias branch='git branch | grep -v "^\*" | fzf --height=20% --reverse --info=inline | xargs git switch'
-alias dotfiles='git --git-dir="$HOME/.dotfiles" --work-tree="$HOME"'
+alias dot='git --git-dir="$HOME/.dotfiles" --work-tree="$HOME"'
 alias lf=lfcd
 
 # tool initialization

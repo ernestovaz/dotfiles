@@ -23,8 +23,8 @@
 ```bash
 # Clone bare repo
 git clone --bare <repo-url> $HOME/.dotfiles
-alias dotfiles='git --git-dir="$HOME/.dotfiles" --work-tree="$HOME"'
-dotfiles checkout
+alias dot='git --git-dir="$HOME/.dotfiles" --work-tree="$HOME"'
+dot checkout
 
 # Dependencies
 # fzf, fd, ripgrep, bat, zoxide, neovim, tmux, lazygit, fnm
