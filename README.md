@@ -26,6 +26,13 @@ git clone --bare <repo-url> $HOME/.dotfiles
 alias dotfiles='git --git-dir="$HOME/.dotfiles" --work-tree="$HOME"'
 dotfiles checkout
 
+# Dependencies
+# fzf, fd, ripgrep, bat, zoxide, neovim, tmux, lazygit, fnm
+
+# Antidote (zsh plugin manager)
+git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+# Plugins auto-install on first shell open
+
 # Tmux plugins (managed by TPM)
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Then inside tmux: prefix (Ctrl+Space) + I

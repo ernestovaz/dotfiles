@@ -12,7 +12,7 @@ fi
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # load antidote
-source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load "$HOME/.zsh_plugins.txt"
 
 # completions style (replaces omz lib/completion.zsh)
@@ -92,11 +92,8 @@ alias lf=lfcd
 # tool initialization
 eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init zsh)"
-source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-source /opt/homebrew/opt/fzf/shell/completion.zsh
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.4.1
+# fzf
+source <(fzf --zsh)
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 . "$HOME/.local/bin/env"
