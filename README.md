@@ -25,6 +25,7 @@
 git clone --bare <repo-url> $HOME/.dotfiles
 alias dot='git --git-dir="$HOME/.dotfiles" --work-tree="$HOME"'
 dot checkout
+dot submodule update --init
 
 # Dependencies
 # zsh, ghostty, tmux, neovim
