@@ -27,7 +27,8 @@ alias dot='git --git-dir="$HOME/.dotfiles" --work-tree="$HOME"'
 dot checkout
 
 # Dependencies
-# fzf, fd, ripgrep, bat, zoxide, neovim, tmux, lazygit, fnm
+# zsh, ghostty, tmux, neovim
+# fzf, fd, ripgrep, bat, zoxide, lazygit, fnm, delta
 
 # Antidote (zsh plugin manager)
 git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
