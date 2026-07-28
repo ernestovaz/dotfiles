@@ -1,15 +1,10 @@
-# Plugins for antidote
+# Plugins for antidote — no oh-my-zsh dependency
 
-# oh-my-zsh core libs (cherry-picked)
-ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-ohmyzsh/ohmyzsh path:lib/completion.zsh
-ohmyzsh/ohmyzsh path:lib/git.zsh
-ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+# git aliases (standalone omz-git)
+aeons/omz-git
 
-# oh-my-zsh plugins (cherry-picked)
-ohmyzsh/ohmyzsh path:plugins/git
-ohmyzsh/ohmyzsh path:plugins/kubectl
-ohmyzsh/ohmyzsh path:plugins/vi-mode
+# vi-mode
+softmoth/zsh-vim-mode
 
 # community plugins
 zsh-users/zsh-autosuggestions

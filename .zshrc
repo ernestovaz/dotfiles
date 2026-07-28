@@ -3,6 +3,7 @@ zmodload zsh/zprof
 # completions
 autoload -Uz compinit
 compinit
+zmodload zsh/complist
 
 # powerlevel10k instant prompt, must stay near the top
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -14,9 +15,18 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 antidote load "$HOME/.zsh_plugins.txt"
 
+# completions style (replaces omz lib/completion.zsh)
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# kubectl completion
+(( $+commands[kubectl] )) && source <(kubectl completion zsh)
+alias k=kubectl
+
 # vi-mode
-VI_MODE_SET_CURSOR=true
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+MODE_CURSOR_VIINS="blinking beam"
+MODE_CURSOR_VICMD="steady block"
 export KEYTIMEOUT=1
 
 # environment
