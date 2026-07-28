@@ -1,9 +1,5 @@
 [core]
 	excludesFile = ~/.gitignore_global
-[delta]
-	navigate = true
-	dark = true
-	side-by-side = true
 [push]
 	autoSetupRemote = true
 	default = current

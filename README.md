@@ -28,7 +28,7 @@ dot checkout
 
 # Dependencies
 # zsh, ghostty, tmux, neovim
-# fzf, fd, ripgrep, bat, zoxide, lazygit, fnm, delta
+# fzf, fd, ripgrep, bat, zoxide, lazygit, fnm
 
 # Antidote (zsh plugin manager)
 git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
