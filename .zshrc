@@ -27,7 +27,7 @@ alias k=kubectl
 # vi-mode
 MODE_CURSOR_VIINS="blinking beam"
 MODE_CURSOR_VICMD="steady block"
-export KEYTIMEOUT=1
+export KEYTIMEOUT=5
 
 # environment
 export XDG_CONFIG_HOME=$HOME/.config
