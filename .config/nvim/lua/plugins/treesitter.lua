@@ -4,70 +4,69 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
-    build = function()
-      require("nvim-treesitter").install({
-        "c", "cpp", "go", "lua", "python", "rust", "tsx", "typescript", "vimdoc", "vim", "elixir",
-      })
-    end,
+    build = ":TSUpdate",
     config = function()
-      -- treesitter highlight and indent are now native in neovim 0.11+
-      vim.treesitter.start = vim.treesitter.start or function() end
+      require("nvim-treesitter.configs").setup {
+        ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "typescript", "vimdoc", "vim", "elixir" },
+        auto_install = false,
 
-      -- textobjects config
-      require("nvim-treesitter-textobjects").setup {
-        select = {
+        highlight = { enable = true },
+        indent = { enable = true },
+
+        incremental_selection = {
           enable = true,
-          lookahead = true,
           keymaps = {
-            ["aa"] = "@parameter.outer",
-            ["ia"] = "@parameter.inner",
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
+            init_selection = "<c-space>",
+            node_incremental = "<c-space>",
+            scope_incremental = "<c-s>",
+            node_decremental = "<M-space>",
           },
         },
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            ["]m"] = "@class.outer",
-            ["]]"] = "@function.outer",
+
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["aa"] = "@parameter.outer",
+              ["ia"] = "@parameter.inner",
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+            },
           },
-          goto_next_end = {
-            ["]M"] = "@class.outer",
-            ["]["] = "@function.outer",
+          move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+              ["]m"] = "@class.outer",
+              ["]]"] = "@function.outer",
+            },
+            goto_next_end = {
+              ["]M"] = "@class.outer",
+              ["]["] = "@function.outer",
+            },
+            goto_previous_start = {
+              ["[m"] = "@class.outer",
+              ["[["] = "@function.outer",
+            },
+            goto_previous_end = {
+              ["[M"] = "@class.outer",
+              ["[]"] = "@function.outer",
+            },
           },
-          goto_previous_start = {
-            ["[m"] = "@class.outer",
-            ["[["] = "@function.outer",
-          },
-          goto_previous_end = {
-            ["[M"] = "@class.outer",
-            ["[]"] = "@function.outer",
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>a"] = "@parameter.inner",
-          },
-          swap_previous = {
-            ["<leader>A"] = "@parameter.inner",
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<leader>a"] = "@parameter.inner",
+            },
+            swap_previous = {
+              ["<leader>A"] = "@parameter.inner",
+            },
           },
         },
       }
-
-      -- incremental selection
-      vim.keymap.set("n", "<C-space>", function()
-        require("nvim-treesitter.incremental_selection").init_selection()
-      end, { desc = "treesitter: init selection" })
-      vim.keymap.set("x", "<C-space>", function()
-        require("nvim-treesitter.incremental_selection").node_incremental()
-      end, { desc = "treesitter: grow selection" })
-      vim.keymap.set("x", "<M-space>", function()
-        require("nvim-treesitter.incremental_selection").node_decremental()
-      end, { desc = "treesitter: shrink selection" })
     end,
   },
 }

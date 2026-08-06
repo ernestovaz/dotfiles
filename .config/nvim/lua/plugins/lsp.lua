@@ -67,11 +67,29 @@ return {
         },
       })
 
+      vim.lsp.config("rust_analyzer", {
+        capabilities = capabilities,
+        settings = {
+          ["rust-analyzer"] = {
+            check = {
+              command = "clippy",
+            },
+            cargo = {
+              allFeatures = true,
+            },
+          },
+        },
+      })
+
       -- mason-lspconfig: auto-install and auto-enable
       require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls" },
+        ensure_installed = { "lua_ls", "rust_analyzer" },
         automatic_enable = true,
       }
+
+      -- explicitly enable servers (needed on neovim 0.11)
+      vim.lsp.enable("lua_ls")
+      vim.lsp.enable("rust_analyzer")
     end,
   },
 }
