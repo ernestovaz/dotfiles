@@ -32,7 +32,7 @@ export KEYTIMEOUT=5
 # environment
 export XDG_CONFIG_HOME=$HOME/.config
 export VAULT_ADDR=https://vault.tools.sap
-export KUBECONFIG=~/code/kubeconfigs/config
+export KUBECONFIG=~/code/concur/kraken/kubeconfigs/config
 export SDKMAN_DIR="$HOME/.sdkman"
 export WASMTIME_HOME="$HOME/.wasmtime"
 
@@ -94,6 +94,24 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init zsh)"
 # fzf
 source <(fzf --zsh)
+# chruby (lazy-loaded — only activates on first ruby/gem/bundle call)
+_load_chruby() {
+  unfunction ruby gem irb bundle rake 2>/dev/null
+  if [[ -f /opt/homebrew/opt/chruby/share/chruby/chruby.sh ]]; then
+    source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+    source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+    chruby ruby-3.4.1
+  elif [[ -f /usr/local/share/chruby/chruby.sh ]]; then
+    source /usr/local/share/chruby/chruby.sh
+    source /usr/local/share/chruby/auto.sh
+    chruby ruby-3.4.1
+  fi
+}
+ruby()   { _load_chruby; ruby "$@" }
+gem()    { _load_chruby; gem "$@" }
+irb()    { _load_chruby; irb "$@" }
+bundle() { _load_chruby; bundle "$@" }
+rake()   { _load_chruby; rake "$@" }
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
@@ -161,3 +179,9 @@ rgi() {
 
 # Local/corporate overrides (not tracked in dotfiles)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Speed up pi.dev startup (skip network checks)
+export PI_OFFLINE=1
+
+# TinyTeX
+export PATH="$PATH:$HOME/Library/TinyTeX/bin/universal-darwin"
